@@ -100,12 +100,7 @@ for (var i = 0; i < radar_data.length; i++) {
     });
     
     var offsetIndex = 0;
-    for (var stageIdx in _(itemsByStage).keys()) {
-
-        if (stageIdx > 0) {
-            offsetIndex = offsetIndex + itemsByStage[stageIdx-1].length + 1; 
-            console.log("offsetIndex = " + itemsByStage[stageIdx-1].length, offsetIndex );
-        }
+    for (var stageIdx in itemsByStage) {
 
         radar.add(pv.Label)         
             .left( radar_data[i].left + headingFontSize )
@@ -156,7 +151,9 @@ for (var i = 0; i < radar_data.length; i++) {
           .textBaseline("middle")
           .textStyle("white");            
 
-
+	var offsetterLength = itemsByStage[stageIdx].length;
+	offsetIndex = offsetIndex + offsetterLength + 1; 
+	console.log("offsetIndex = " + offsetterLength, offsetIndex );	
     }
 }      
        
